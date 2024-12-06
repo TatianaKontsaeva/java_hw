@@ -1,4 +1,6 @@
 package task2;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -43,14 +45,17 @@ public class CreateAnimalService {
         String name = names[random.nextInt(names.length)];
         double cost = costs[random.nextInt(costs.length)];
         String character = characters[random.nextInt(characters.length)];
+        
+        // создаем рандомно дату раждения
+        LocalDate birthDate = LocalDate.of(random.nextInt(2000) + 1920, random.nextInt(12) + 1, random.nextInt(28) + 1);
 
         // Случайно выбираем, будет ли это хищник или домашнее животное
         if (random.nextBoolean()) {
-            Animal animal = new Predator(breed, name, cost, character);
+            Animal animal = new Predator(breed, name, cost, character, birthDate);
             System.out.println("Создан хищник: " + animal.getName());
             return animal;
         } else {
-            Animal animal = new Pet(breed, name, cost, character);
+            Animal animal = new Pet(breed, name, cost, character, birthDate);
             System.out.println("Создан питомец: " + animal.getName());
             return animal;
         }
