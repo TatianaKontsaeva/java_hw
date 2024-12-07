@@ -8,8 +8,9 @@
 ● ИнтерфейсAnimalимеет4метода ○ getBreed(); <br>
 ○ getName(); <br>
 ○ getCost(); <br>
-○ getCharacter();
-● АбстрактныйклассAbstractAnimalимеет5полей: ○ protectedStringbreed;//порода <br>
+○ getCharacter(); <br>
+● АбстрактныйклассAbstractAnimalимеет5полей: <br> 
+○ protectedStringbreed;//порода <br>
 ○ protected String name; // имя <br>
 ○ protectedDoublecost;//ценавмагазине <br>
 ○ protectedStringcharacter;//характер <br>
