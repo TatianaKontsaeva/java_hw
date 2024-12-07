@@ -1,41 +1,29 @@
 package task2;
 
-import java.util.List; 
-
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        CreateAnimalService animalService = new CreateAnimalService();
+        CreateAnimalService createAnimalService = new CreateAnimalService();
 
-        // Создание 10 уникальных животных
-        System.out.println("Создание 10 уникальных животных:");
-        List<Animal> animalList = animalService.createDefaultAnimals();
+        List<AbstractAnimal> defaultAnimals = createAnimalService.createDefaultAnimals();
+        List<AbstractAnimal> customAnimals = createAnimalService.createAnimals(5);
+        List<AbstractAnimal> doWhileAnimals = createAnimalService.createAnimalsWithDoWhile(5);
 
-        // Создание 5 животных
-        int N = 5; 
-        System.out.println("\nСоздание " + N + " животных:");
-        animalList = animalService.createNAnimals(N);
+        System.out.println("Созданы стандартные животные: " + defaultAnimals.size());
+        System.out.println("Созданы кастомные животные: " + customAnimals.size());
+        System.out.println("Созданы животные с использованием do-while: " + doWhileAnimals.size());
 
-        // Создание животных с использованием do-while
-        System.out.println("\nСоздание " + N + " животных с использованием do-while:");
-        animalList = animalService.createAnimalsUsingDoWhile(N);
+        List<AbstractAnimal> animals = createAnimalService.createDefaultAnimals();
 
         SearchService searchService = new SearchServiceImpl();
+        
+        List<String> leapYearNames = searchService.findLeapYearNames(animals);
+        System.out.println("Животные, родившиеся в високосный год: " + leapYearNames);
 
-        String[] leapYearNames = searchService.findLeapYearNames(animalList.toArray(new Animal[0])); 
-        System.out.println("\nЖивотные, родившиеся в високосный год:");
-        for (String name : leapYearNames) {
-            System.out.println(name);
-        }
+        List<AbstractAnimal> olderAnimals = searchService.findOlderAnimal(animals, 5);
+        System.out.println("Животные старше 5 лет: " + olderAnimals.size());
 
-        int age = 5; 
-        Animal[] olderAnimals = searchService.findOlderAnimal(animalList.toArray(new Animal[0]), age); 
-        System.out.println("\nЖивотные старше " + age + " лет:");
-        for (Animal animal : olderAnimals) {
-            System.out.println(animal.getName());
-        }
-
-        System.out.println("\nДубликаты животных:");
-        searchService.findDuplicate(animalList.toArray(new Animal[0])); 
+        searchService.findDuplicate(animals);
     }
 }
