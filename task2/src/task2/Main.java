@@ -5,15 +5,6 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         CreateAnimalService createAnimalService = new CreateAnimalService();
-
-        List<AbstractAnimal> defaultAnimals = createAnimalService.createDefaultAnimals();
-        List<AbstractAnimal> customAnimals = createAnimalService.createAnimals(5);
-        List<AbstractAnimal> doWhileAnimals = createAnimalService.createAnimalsWithDoWhile(5);
-
-        System.out.println("Созданы стандартные животные: " + defaultAnimals.size());
-        System.out.println("Созданы кастомные животные: " + customAnimals.size());
-        System.out.println("Созданы животные с использованием do-while: " + doWhileAnimals.size());
-
         List<AbstractAnimal> animals = createAnimalService.createDefaultAnimals();
 
         SearchService searchService = new SearchServiceImpl();
